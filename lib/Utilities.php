@@ -31,7 +31,7 @@ final class Utilities {
 	 * @param string $secret The secret
 	 * @return string[] An array of [payload, secret]
 	 */
-	public static function encode_and_sign(mixed $payload, string $secret): array {
+	public static function encode_and_sign($payload, string $secret): array {
 		$secret = Base32::decode($secret);
 
 		// Encode payload
@@ -54,7 +54,7 @@ final class Utilities {
 	 * @param string $secret The secret
 	 * @return mixed The decoded payload
 	 */
-	public static function verify_and_decode(string $payload, string $signature, string $secret): mixed {
+	public static function verify_and_decode(string $payload, string $signature, string $secret) {
 		$secret = Base32::decode($secret);
 
 		// Check signature
