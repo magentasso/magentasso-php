@@ -11,7 +11,7 @@ class MagentaResponse extends MagentaBase {
 	 * @param array<string, mixed> $user_data Data about the authenticated user
 	 * @param array<string, mixed> $scope_data Scoped data about the authenticated user, as per a MagentaRequest
 	 */
-	public function __construct(string $client_id, string $secret, ?int $nonce, ?array $user_data, ?array $scope_data) {
+	public function __construct(string $client_id, string $secret, ?int $nonce = null, ?array $user_data = null, ?array $scope_data = null) {
 		$nonce ??= random_int(1000000, 9999999);
 
 		$data = [

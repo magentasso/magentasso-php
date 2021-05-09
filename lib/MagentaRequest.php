@@ -11,7 +11,7 @@ class MagentaRequest extends MagentaBase {
 	 * @param string[] $scopes The list of scopes to request
 	 * @param string $callback_url The URL that the Magenta server will call back to
 	 */
-	public function __construct(string $client_id, string $secret, ?int $nonce, ?array $scopes, ?string $callback_url) {
+	public function __construct(string $client_id, string $secret, ?int $nonce = null, ?array $scopes = null, ?string $callback_url = null) {
 		$nonce ??= random_int(1000000, 9999999);
 
 		$data = [
