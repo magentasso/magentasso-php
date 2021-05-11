@@ -2,11 +2,14 @@
 namespace MagentaSSO;
 
 class MagentaBase {
-	protected string $client_id;
-	private string $secret;
+	/** @var string $client_id */
+	protected $client_id;
+
+	/** @var string $secret */
+	private $secret;
 
 	/** @var array<string, mixed> */
-	public array $data;
+	public $data;
 
 	/**
 	 * Create a MagentaBase.
