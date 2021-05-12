@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    name: PHP ${{ matrix.php-version }}
+    name: Test - PHP ${{ matrix.php-version }}
     runs-on: ubuntu-latest
 
     strategy:
@@ -32,6 +32,27 @@ jobs:
 
       - name: Run tests
         run: vendor/bin/phpunit -c phpunit.xml
+      
+  lint:
+    name: Lint - PHP ${{ matrix.php-version }}
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        php-version: ['8.0']
+
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+
+      - name: Install PHP ${{ matrix.php-version }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          tools: composer:v2
+
+      - name: Install dependencies
+        run: composer install
 
       - name: Run PHPStan
-        run: vendor/bin/phpstan analyse -l 7 lib
+        run: vendor/bin/phpstan analyse -c phpstan.neon
